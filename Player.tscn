@@ -1,0 +1,51 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/player/adventurer-idle-00.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/adventurer-idle-02.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/adventurer-idle-03.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/adventurer-run-00.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/adventurer-run-01.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/adventurer-run-02.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/adventurer-idle-01.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/adventurer-run-03.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/adventurer-run-04.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/adventurer-smrslt-01.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/adventurer-smrslt-02.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/adventurer-smrslt-00.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/adventurer-run-05.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/adventurer-smrslt-03.png" type="Texture" id=14]
+[ext_resource path="res://Player.gd" type="Script" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "jump",
+"speed": 11.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.49582
+height = 10.7441
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.580093, 3.5794 )
+shape = SubResource( 2 )
